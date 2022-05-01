@@ -1,0 +1,1924 @@
+{
+    "Handles": [
+        {
+            "Type": "Adapter",
+            "Description": "Handle to a physical graphics and/or compute device.\n\nAdapters can be used to open a connection to the corresponding Device on the host system by using Adapter::request_device.\n\nDoes not have to be kept alive.\n",
+            "Functions": [
+                {
+                    "Name": "EnumerateFeatures",
+                    "Free": "wgpuAdapterEnumerateFeatures",
+                    "Description": "List all features that are supported with this adapter.",
+                    "Args": [
+                        {
+                            "Name": "features",
+                            "Type": "FeatureName byref",
+                            "Description": "A pointer to the object to populate."
+                        }
+                    ]
+                },
+                {
+                    "Name": "GetLimits",
+                    "Free": "wgpuAdapterGetLimits",
+                    "Description": "List the “best” limits that are supported by this adapter.\n\nLimits must be explicitly requested in Adapter.RequestDevice to set the values that you are allowed to use.\n",
+                    "Args": [
+                        {
+                            "Name": "limits",
+                            "Type": "SupportedLimits byref",
+                            "Description": "A pointer to the object to populate."
+                        }
+                    ]
+                },
+                {
+                    "Name": "GetProperties",
+                    "Free": "wgpuAdapterGetProperties",
+                    "Description": "Get info about the adapter itself.",
+                    "Args": [
+                        {
+                            "Name": "properties",
+                            "Type": "AdapterProperties byref",
+                            "Description": "A pointer to the object to populate."
+                        }
+                    ]
+                },
+                {
+                    "Name": "HasFeature",
+                    "Free": "wgpuAdapterHasFeature",
+                    "Description": "Returns whether this adapter has the requested feature.",
+                    "Args": [
+                        {
+                            "Name": "feature",
+                            "Type": "FeatureName",
+                            "Description": "The feature to check for."
+                        }
+                    ]
+                },
+                {
+                    "Name": "RequestDevice",
+                    "Free": "wgpuAdapterRequestDevice",
+                    "Description": "Requests a connection to a physical device, creating a logical device.",
+                    "Args": [
+                        {
+                            "Name": "descriptor",
+                            "Type": "DeviceDescriptor byref",
+                            "Description": "Description of the features and limits requested from the given device."
+                        },
+                        {
+                            "Name": "callback",
+                            "Type": "RequestDeviceCallback",
+                            "Description": "A delegate to be called when the adapter is retrieved."
+                        },
+                        {
+                            "Name": "userdata",
+                            "Type": "nativeint",
+                            "Description": "Data to contain in the callback parameters."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Type": "BindGroup",
+            "Description": "Handle to a binding group.\n\nA BindGroup represents the set of resources bound to the bindings described by a BindGroupLayout. It can be created with Device.CreateBindGroup. A BindGroup can be bound to a particular RenderPass with RenderPass.SetBindGroup, or to a ComputePass with ComputePass.SetBindGroup.\n",
+            "Functions": [
+                {
+                    "Name": "Drop",
+                    "Free": "wgpuBindGroupDrop",
+                    "Description": "Executes the destructor for this type.",
+                    "Args": []
+                }
+            ]
+        },
+        {
+            "Type": "BindGroupLayout",
+            "Description": "Handle to a binding group layout.\n\nA BindGroupLayout is a handle to the GPU-side layout of a binding group. It can be used to create a BindGroupDescriptor object, which in turn can be used to create a BindGroup object with Device.CreateBindGroup. A series of BindGroupLayouts can also be used to create a PipelineLayoutDescriptor, which can be used to create a PipelineLayout.\n",
+            "Functions": [
+                {
+                    "Name": "Drop",
+                    "Free": "wgpuBindGroupLayoutDrop",
+                    "Description": "Executes the destructor for this type.",
+                    "Args": []
+                }
+            ]
+        },
+        {
+            "Type": "Buffer",
+            "Description": "Handle to a GPU-accessible buffer.\n\nCreated with Device.CreateBuffer or DeviceExt.CreateBufferInit.\n",
+            "Functions": [
+                {
+                    "Name": "Destroy",
+                    "Free": "wgpuBufferDestroy",
+                    "Description": "Destroy the associated native resources as soon as possible.",
+                    "Args": []
+                },
+                {
+                    "Name": "GetConstMappedRange",
+                    "Free": "wgpuBufferGetConstMappedRange",
+                    "Description": "",
+                    "Args": [
+                        {
+                            "Name": "offset",
+                            "Type": "uint64",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "size",
+                            "Type": "uint64",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "GetMappedRange",
+                    "Free": "wgpuBufferGetMappedRange",
+                    "Description": "",
+                    "Args": [
+                        {
+                            "Name": "offset",
+                            "Type": "uint64",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "size",
+                            "Type": "uint64",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "MapAsync",
+                    "Free": "wgpuBufferMapAsync",
+                    "Description": "",
+                    "Args": [
+                        {
+                            "Name": "mode",
+                            "Type": "MapMode",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "offset",
+                            "Type": "uint64",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "size",
+                            "Type": "uint64",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "callback",
+                            "Type": "BufferMapCallback",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "userdata",
+                            "Type": "nativeint",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "Unmap",
+                    "Free": "wgpuBufferUnmap",
+                    "Description": "Flushes any pending write operations and unmaps the buffer from host memory.",
+                    "Args": []
+                },
+                {
+                    "Name": "Drop",
+                    "Free": "wgpuBufferDrop",
+                    "Description": "Executes the destructor for this type.",
+                    "Args": []
+                }
+            ]
+        },
+        {
+            "Type": "CommandBuffer",
+            "Description": "Handle to a command buffer on the GPU.\n\nA CommandBuffer represents a complete sequence of commands that may be submitted to a command queue with Queue.Submit. A CommandBuffer is obtained by recording a series of commands to a CommandEncoder and then calling CommandEncoder.Finish.",
+            "Functions": [
+                {
+                    "Name": "Drop",
+                    "Free": "wgpuCommandBufferDrop",
+                    "Description": "Executes the destructor for this type.",
+                    "Args": []
+                }
+            ]
+        },
+        {
+            "Type": "CommandEncoder",
+            "Description": "Encodes a series of GPU operations.\n\nA command encoder can record RenderPasses, ComputePasses, and transfer operations between driver-managed resources like Buffers and Textures.\n\nWhen finished recording, call CommandEncoder.Finish to obtain a CommandBuffer which may be submitted for execution.\n",
+            "Functions": [
+                {
+                    "Name": "BeginComputePass",
+                    "Free": "wgpuCommandEncoderBeginComputePass",
+                    "Description": "Begins recording of a compute pass.\n\nThis function returns a ComputePass object which records a single compute pass.",
+                    "Args": [
+                        {
+                            "Name": "descriptor",
+                            "Type": "ComputePassDescriptor byref"
+                        }
+                    ]
+                },
+                {
+                    "Name": "BeginRenderPass",
+                    "Free": "wgpuCommandEncoderBeginRenderPass",
+                    "Description": "Begins recording of a render pass.\n\nThis function returns a RenderPass object which records a single render pass.",
+                    "Args": [
+                        {
+                            "Name": "descriptor",
+                            "Type": "RenderPassDescriptor byref"
+                        }
+                    ]
+                },
+                {
+                    "Name": "ClearBuffer",
+                    "Free": "wgpuCommandEncoderClearBuffer",
+                    "Description": "",
+                    "Args": [
+                        {
+                            "Name": "buffer",
+                            "Type": "Buffer",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "offset",
+                            "Type": "uint64",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "size",
+                            "Type": "uint64",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "CopyBufferToBuffer",
+                    "Free": "wgpuCommandEncoderCopyBufferToBuffer",
+                    "Description": "",
+                    "Args": [
+                        {
+                            "Name": "source",
+                            "Type": "Buffer",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "sourceOffset",
+                            "Type": "uint64",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "destination",
+                            "Type": "Buffer",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "destinationOffset",
+                            "Type": "uint64",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "size",
+                            "Type": "uint64",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "CopyBufferToTexture",
+                    "Free": "wgpuCommandEncoderCopyBufferToTexture",
+                    "Description": "",
+                    "Args": [
+                        {
+                            "Name": "source",
+                            "Type": "ImageCopyBuffer byref"
+                        },
+                        {
+                            "Name": "destination",
+                            "Type": "ImageCopyTexture byref"
+                        },
+                        {
+                            "Name": "copySize",
+                            "Type": "Extent3D byref"
+                        }
+                    ]
+                },
+                {
+                    "Name": "CopyTextureToBuffer",
+                    "Free": "wgpuCommandEncoderCopyTextureToBuffer",
+                    "Description": "",
+                    "Args": [
+                        {
+                            "Name": "source",
+                            "Type": "ImageCopyTexture byref"
+                        },
+                        {
+                            "Name": "destination",
+                            "Type": "ImageCopyBuffer byref"
+                        },
+                        {
+                            "Name": "copySize",
+                            "Type": "Extent3D byref"
+                        }
+                    ]
+                },
+                {
+                    "Name": "CopyTextureToTexture",
+                    "Free": "wgpuCommandEncoderCopyTextureToTexture",
+                    "Description": "",
+                    "Args": [
+                        {
+                            "Name": "source",
+                            "Type": "ImageCopyTexture byref"
+                        },
+                        {
+                            "Name": "destination",
+                            "Type": "ImageCopyTexture byref"
+                        },
+                        {
+                            "Name": "copySize",
+                            "Type": "Extent3D byref"
+                        }
+                    ]
+                },
+                {
+                    "Name": "Finish",
+                    "Free": "wgpuCommandEncoderFinish",
+                    "Description": "Finishes recording and returns a CommandBuffer that can be submitted for execution.",
+                    "Args": [
+                        {
+                            "Name": "descriptor",
+                            "Type": "CommandBufferDescriptor byref"
+                        }
+                    ]
+                },
+                {
+                    "Name": "InsertDebugMarker",
+                    "Free": "wgpuCommandEncoderInsertDebugMarker",
+                    "Description": "",
+                    "Args": [
+                        {
+                            "Name": "markerLabel",
+                            "Type": "string",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "PopDebugGroup",
+                    "Free": "wgpuCommandEncoderPopDebugGroup",
+                    "Description": "",
+                    "Args": []
+                },
+                {
+                    "Name": "PushDebugGroup",
+                    "Free": "wgpuCommandEncoderPushDebugGroup",
+                    "Description": "",
+                    "Args": [
+                        {
+                            "Name": "groupLabel",
+                            "Type": "string",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "ResolveQuerySet",
+                    "Free": "wgpuCommandEncoderResolveQuerySet",
+                    "Description": "",
+                    "Args": [
+                        {
+                            "Name": "querySet",
+                            "Type": "QuerySet",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "firstQuery",
+                            "Type": "uint32",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "queryCount",
+                            "Type": "uint32",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "destination",
+                            "Type": "Buffer",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "destinationOffset",
+                            "Type": "uint64",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "WriteTimestamp",
+                    "Free": "wgpuCommandEncoderWriteTimestamp",
+                    "Description": "",
+                    "Args": [
+                        {
+                            "Name": "querySet",
+                            "Type": "QuerySet",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "queryIndex",
+                            "Type": "uint32",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "Drop",
+                    "Free": "wgpuCommandEncoderDrop",
+                    "Description": "Executes the destructor for this type.",
+                    "Args": []
+                }
+            ]
+        },
+        {
+            "Type": "ComputePassEncoder",
+            "Description": "In-progress recording of a compute pass.",
+            "Functions": [
+                {
+                    "Name": "BeginPipelineStatisticsQuery",
+                    "Free": "wgpuComputePassEncoderBeginPipelineStatisticsQuery",
+                    "Description": "Start a pipeline statistics query on this render pass. It can be ended with end_pipeline_statistics_query. Pipeline statistics queries may not be nested.",
+                    "Args": [
+                        {
+                            "Name": "querySet",
+                            "Type": "QuerySet",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "queryIndex",
+                            "Type": "uint32",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "Dispatch",
+                    "Free": "wgpuComputePassEncoderDispatch",
+                    "Description": "Dispatches compute work operations.\n\nx, y and z denote the number of work groups to dispatch in each dimension.",
+                    "Args": [
+                        {
+                            "Name": "workgroupCountX",
+                            "Type": "uint32",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "workgroupCountY",
+                            "Type": "uint32",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "workgroupCountZ",
+                            "Type": "uint32",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "DispatchIndirect",
+                    "Free": "wgpuComputePassEncoderDispatchIndirect",
+                    "Description": "Dispatches compute work operations, based on the contents of the indirect_buffer.",
+                    "Args": [
+                        {
+                            "Name": "indirectBuffer",
+                            "Type": "Buffer",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "indirectOffset",
+                            "Type": "uint64",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "End",
+                    "Free": "wgpuComputePassEncoderEnd",
+                    "Description": "",
+                    "Args": []
+                },
+                {
+                    "Name": "EndPipelineStatisticsQuery",
+                    "Free": "wgpuComputePassEncoderEndPipelineStatisticsQuery",
+                    "Description": "End the pipeline statistics query on this render pass. It can be started with begin_pipeline_statistics_query. Pipeline statistics queries may not be nested.",
+                    "Args": []
+                },
+                {
+                    "Name": "InsertDebugMarker",
+                    "Free": "wgpuComputePassEncoderInsertDebugMarker",
+                    "Description": "",
+                    "Args": [
+                        {
+                            "Name": "markerLabel",
+                            "Type": "string",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "PopDebugGroup",
+                    "Free": "wgpuComputePassEncoderPopDebugGroup",
+                    "Description": "",
+                    "Args": []
+                },
+                {
+                    "Name": "PushDebugGroup",
+                    "Free": "wgpuComputePassEncoderPushDebugGroup",
+                    "Description": "",
+                    "Args": [
+                        {
+                            "Name": "groupLabel",
+                            "Type": "string",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "SetBindGroup",
+                    "Free": "wgpuComputePassEncoderSetBindGroup",
+                    "Description": "Sets the active bind group for a given bind group index. The bind group layout in the active pipeline when the dispatch() function is called must match the layout of this bind group.\n\nIf the bind group have dynamic offsets, provide them in the binding order. These offsets have to be aligned to Limits.minUniformBufferOffsetAlignment or Limits.minStorageBufferOffsetAlignment appropriately.\n",
+                    "Args": [
+                        {
+                            "Name": "groupIndex",
+                            "Type": "uint32",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "group",
+                            "Type": "BindGroup",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "dynamicOffsetCount",
+                            "Type": "uint32",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "dynamicOffsets",
+                            "Type": "uint32 byref"
+                        }
+                    ]
+                },
+                {
+                    "Name": "SetPipeline",
+                    "Free": "wgpuComputePassEncoderSetPipeline",
+                    "Description": "Sets the active compute pipeline.",
+                    "Args": [
+                        {
+                            "Name": "pipeline",
+                            "Type": "ComputePipeline",
+                            "Description": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Type": "ComputePipeline",
+            "Description": "Handle to a compute pipeline.\n\nA ComputePipeline object represents a compute pipeline and its single shader stage. A ComputePipeline may be created with Device.CreatePipeline.\n",
+            "Functions": [
+                {
+                    "Name": "GetBindGroupLayout",
+                    "Free": "wgpuComputePipelineGetBindGroupLayout",
+                    "Description": "Get an object representing the bind group layout at a given index.",
+                    "Args": [
+                        {
+                            "Name": "groupIndex",
+                            "Type": "uint32",
+                            "Description": "The index of the bind group layout."
+                        }
+                    ]
+                },
+                {
+                    "Name": "SetLabel",
+                    "Free": "wgpuComputePipelineSetLabel",
+                    "Description": "",
+                    "Args": [
+                        {
+                            "Name": "label",
+                            "Type": "string",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "Drop",
+                    "Free": "wgpuComputePipelineDrop",
+                    "Description": "Executes the destructor for this type.",
+                    "Args": []
+                }
+            ]
+        },
+        {
+            "Type": "Device",
+            "Description": "Open connection to a graphics and/or compute device.\n\nResponsible for the creation of most rendering and compute resources. These are then used in commands, which are submitted to a Queue.\n\nA device may be requested from an adapter with Adapter.RequestDevice.",
+            "Functions": [
+                {
+                    "Name": "CreateBindGroup",
+                    "Free": "wgpuDeviceCreateBindGroup",
+                    "Description": "Creates a new BindGroup.",
+                    "Args": [
+                        {
+                            "Name": "descriptor",
+                            "Type": "BindGroupDescriptor byref"
+                        }
+                    ]
+                },
+                {
+                    "Name": "CreateBindGroupLayout",
+                    "Free": "wgpuDeviceCreateBindGroupLayout",
+                    "Description": "Creates a new BindGroupLayout.",
+                    "Args": [
+                        {
+                            "Name": "descriptor",
+                            "Type": "BindGroupLayoutDescriptor byref"
+                        }
+                    ]
+                },
+                {
+                    "Name": "CreateBuffer",
+                    "Free": "wgpuDeviceCreateBuffer",
+                    "Description": "Creates a Buffer.",
+                    "Args": [
+                        {
+                            "Name": "descriptor",
+                            "Type": "BufferDescriptor byref"
+                        }
+                    ]
+                },
+                {
+                    "Name": "CreateCommandEncoder",
+                    "Free": "wgpuDeviceCreateCommandEncoder",
+                    "Description": "Creates an empty CommandEncoder.",
+                    "Args": [
+                        {
+                            "Name": "descriptor",
+                            "Type": "CommandEncoderDescriptor byref"
+                        }
+                    ]
+                },
+                {
+                    "Name": "CreateComputePipeline",
+                    "Free": "wgpuDeviceCreateComputePipeline",
+                    "Description": "Creates a ComputePipeline.",
+                    "Args": [
+                        {
+                            "Name": "descriptor",
+                            "Type": "ComputePipelineDescriptor byref"
+                        }
+                    ]
+                },
+                {
+                    "Name": "CreateComputePipelineAsync",
+                    "Free": "wgpuDeviceCreateComputePipelineAsync",
+                    "Description": "Creates a ComputePipeline asynchronously.",
+                    "Args": [
+                        {
+                            "Name": "descriptor",
+                            "Type": "ComputePipelineDescriptor byref"
+                        },
+                        {
+                            "Name": "callback",
+                            "Type": "CreateComputePipelineAsyncCallback",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "userdata",
+                            "Type": "nativeint",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "CreatePipelineLayout",
+                    "Free": "wgpuDeviceCreatePipelineLayout",
+                    "Description": "Creates a PipelineLayout.",
+                    "Args": [
+                        {
+                            "Name": "descriptor",
+                            "Type": "PipelineLayoutDescriptor byref"
+                        }
+                    ]
+                },
+                {
+                    "Name": "CreateQuerySet",
+                    "Free": "wgpuDeviceCreateQuerySet",
+                    "Description": "Creates a QuerySet.",
+                    "Args": [
+                        {
+                            "Name": "descriptor",
+                            "Type": "QuerySetDescriptor byref"
+                        }
+                    ]
+                },
+                {
+                    "Name": "CreateRenderBundleEncoder",
+                    "Free": "wgpuDeviceCreateRenderBundleEncoder",
+                    "Description": "Creates an empty RenderBundleEncoder.",
+                    "Args": [
+                        {
+                            "Name": "descriptor",
+                            "Type": "RenderBundleEncoderDescriptor byref"
+                        }
+                    ]
+                },
+                {
+                    "Name": "CreateRenderPipeline",
+                    "Free": "wgpuDeviceCreateRenderPipeline",
+                    "Description": "Creates a RenderPipeline.",
+                    "Args": [
+                        {
+                            "Name": "descriptor",
+                            "Type": "RenderPipelineDescriptor byref"
+                        }
+                    ]
+                },
+                {
+                    "Name": "CreateRenderPipelineAsync",
+                    "Free": "wgpuDeviceCreateRenderPipelineAsync",
+                    "Description": "Creates a RenderPipeline asynchronously.",
+                    "Args": [
+                        {
+                            "Name": "descriptor",
+                            "Type": "RenderPipelineDescriptor byref"
+                        },
+                        {
+                            "Name": "callback",
+                            "Type": "CreateRenderPipelineAsyncCallback",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "userdata",
+                            "Type": "nativeint",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "CreateSampler",
+                    "Free": "wgpuDeviceCreateSampler",
+                    "Description": "Creates a new Sampler.",
+                    "Args": [
+                        {
+                            "Name": "descriptor",
+                            "Type": "SamplerDescriptor byref",
+                            "Description": "Specifies the behavior of the sampler."
+                        }
+                    ]
+                },
+                {
+                    "Name": "CreateShaderModule",
+                    "Free": "wgpuDeviceCreateShaderModule",
+                    "Description": "Creates a shader module from either SPIR-V or WGSL source code.",
+                    "Args": [
+                        {
+                            "Name": "descriptor",
+                            "Type": "ShaderModuleDescriptor byref"
+                        }
+                    ]
+                },
+                {
+                    "Name": "CreateSwapChain",
+                    "Free": "wgpuDeviceCreateSwapChain",
+                    "Description": "Creates a new SwapChain.",
+                    "Args": [
+                        {
+                            "Name": "surface",
+                            "Type": "Surface",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "descriptor",
+                            "Type": "SwapChainDescriptor byref"
+                        }
+                    ]
+                },
+                {
+                    "Name": "CreateTexture",
+                    "Free": "wgpuDeviceCreateTexture",
+                    "Description": "Creates a new Texture.",
+                    "Args": [
+                        {
+                            "Name": "descriptor",
+                            "Type": "TextureDescriptor byref",
+                            "Description": "Specifies the general format of the texture."
+                        }
+                    ]
+                },
+                {
+                    "Name": "Destroy",
+                    "Free": "wgpuDeviceDestroy",
+                    "Description": "Destroy the associated native resources as soon as possible.",
+                    "Args": []
+                },
+                {
+                    "Name": "EnumerateFeatures",
+                    "Free": "wgpuDeviceEnumerateFeatures",
+                    "Description": "List all features that may be used with this device.\n\nFunctions may panic if you use unsupported features.",
+                    "Args": [
+                        {
+                            "Name": "features",
+                            "Type": "FeatureName byref",
+                            "Description": "A pointer to the object to populate"
+                        }
+                    ]
+                },
+                {
+                    "Name": "GetLimits",
+                    "Free": "wgpuDeviceGetLimits",
+                    "Description": "List all limits that were requested of this device.\n\nIf any of these limits are exceeded, functions may panic.",
+                    "Args": [
+                        {
+                            "Name": "limits",
+                            "Type": "SupportedLimits byref",
+                            "Description": "A pointer to the object to populate"
+                        }
+                    ]
+                },
+                {
+                    "Name": "GetQueue",
+                    "Free": "wgpuDeviceGetQueue",
+                    "Description": "Retrieves the queue for the device.",
+                    "Args": []
+                },
+                {
+                    "Name": "HasFeature",
+                    "Free": "wgpuDeviceHasFeature",
+                    "Description": "Returns whether this adapter has the requested feature.",
+                    "Args": [
+                        {
+                            "Name": "feature",
+                            "Type": "FeatureName",
+                            "Description": "The feature to check for."
+                        }
+                    ]
+                },
+                {
+                    "Name": "PopErrorScope",
+                    "Free": "wgpuDevicePopErrorScope",
+                    "Description": "",
+                    "Args": [
+                        {
+                            "Name": "callback",
+                            "Type": "ErrorCallback",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "userdata",
+                            "Type": "nativeint",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "PushErrorScope",
+                    "Free": "wgpuDevicePushErrorScope",
+                    "Description": "",
+                    "Args": [
+                        {
+                            "Name": "filter",
+                            "Type": "ErrorFilter",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "SetDeviceLostCallback",
+                    "Free": "wgpuDeviceSetDeviceLostCallback",
+                    "Description": "Sets a callback to be executed if device is lost.",
+                    "Args": [
+                        {
+                            "Name": "callback",
+                            "Type": "DeviceLostCallback",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "userdata",
+                            "Type": "nativeint",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "SetUncapturedErrorCallback",
+                    "Free": "wgpuDeviceSetUncapturedErrorCallback",
+                    "Description": "Sets a callback to be executed if an error occurs.",
+                    "Args": [
+                        {
+                            "Name": "callback",
+                            "Type": "ErrorCallback",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "userdata",
+                            "Type": "nativeint",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "Poll",
+                    "Free": "wgpuDevicePoll",
+                    "Description": "Check for resource cleanups and mapping callbacks.\n\nno-op on the web, device is automatically polled.",
+                    "Args": [
+                        {
+                            "Name": "force_wait",
+                            "Type": "bool",
+                            "Description": "Set to true to make polling block"
+                        }
+                    ]
+                },
+                {
+                    "Name": "Drop",
+                    "Free": "wgpuDeviceDrop",
+                    "Description": "Executes the destructor for this type.",
+                    "Args": []
+                }
+            ]
+        },
+        {
+            "Type": "Instance",
+            "Description": "Context for all other wgpu objects. Instance of wgpu.\n\nThis is the first thing you create when using wgpu. Its primary use is to create Adapters and Surfaces.\n\nDoes not have to be kept alive.",
+            "Functions": [
+                {
+                    "Name": "CreateSurface",
+                    "Free": "wgpuInstanceCreateSurface",
+                    "Description": "Creates a surface from a raw window handle.",
+                    "Args": [
+                        {
+                            "Name": "descriptor",
+                            "Type": "SurfaceDescriptor byref"
+                        }
+                    ]
+                },
+                {
+                    "Name": "ProcessEvents",
+                    "Free": "wgpuInstanceProcessEvents",
+                    "Description": "",
+                    "Args": []
+                },
+                {
+                    "Name": "RequestAdapter",
+                    "Free": "wgpuInstanceRequestAdapter",
+                    "Description": "Retrieves an Adapter which matches the given RequestAdapterOptions.",
+                    "Args": [
+                        {
+                            "Name": "options",
+                            "Type": "RequestAdapterOptions byref",
+                            "Description": "Some options are “soft”, so treated as non-mandatory. Others are “hard”.\n\nIf no adapters are found that suffice all the “hard” options, None is returned."
+                        },
+                        {
+                            "Name": "callback",
+                            "Type": "RequestAdapterCallback",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "userdata",
+                            "Type": "nativeint",
+                            "Description": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Type": "PipelineLayout",
+            "Description": "Handle to a pipeline layout.\n\nA PipelineLayout object describes the available binding groups of a pipeline.",
+            "Functions": [
+                {
+                    "Name": "Drop",
+                    "Free": "wgpuPipelineLayoutDrop",
+                    "Description": "Executes the destructor for this type.",
+                    "Args": []
+                }
+            ]
+        },
+        {
+            "Type": "QuerySet",
+            "Description": "Handle to a query set.",
+            "Functions": [
+                {
+                    "Name": "Destroy",
+                    "Free": "wgpuQuerySetDestroy",
+                    "Description": "Destroy the associated native resources as soon as possible.",
+                    "Args": []
+                },
+                {
+                    "Name": "Drop",
+                    "Free": "wgpuQuerySetDrop",
+                    "Description": "Executes the destructor for this type.",
+                    "Args": []
+                }
+            ]
+        },
+        {
+            "Type": "Queue",
+            "Description": "Handle to a command queue on a device.\n\nA Queue executes recorded CommandBuffer objects and provides convenience methods for writing to buffers and textures.",
+            "Functions": [
+                {
+                    "Name": "OnSubmittedWorkDone",
+                    "Free": "wgpuQueueOnSubmittedWorkDone",
+                    "Description": "Registers a callback that will be executed once all the work submitted by this point is done processing on GPU.",
+                    "Args": [
+                        {
+                            "Name": "callback",
+                            "Type": "QueueWorkDoneCallback",
+                            "Description": "The callback to execute on completion"
+                        },
+                        {
+                            "Name": "userdata",
+                            "Type": "nativeint",
+                            "Description": "Arbitrary data to include in the callback arguments."
+                        }
+                    ]
+                },
+                {
+                    "Name": "Submit",
+                    "Free": "wgpuQueueSubmit",
+                    "Description": "Submits a series of finished command buffers for execution.",
+                    "Args": [
+                        {
+                            "Name": "commandCount",
+                            "Type": "uint32",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "commands",
+                            "Type": "CommandBuffer byref"
+                        }
+                    ]
+                },
+                {
+                    "Name": "WriteBuffer",
+                    "Free": "wgpuQueueWriteBuffer",
+                    "Description": "Schedule a data write into buffer starting at offset.\n\nThis method is intended to have low performance costs. As such, the write is not immediately submitted, and instead enqueued internally to happen at the start of the next submit() call.\n\nThis method fails if data overruns the size of buffer starting at offset.",
+                    "Args": [
+                        {
+                            "Name": "buffer",
+                            "Type": "Buffer",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "bufferOffset",
+                            "Type": "uint64",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "data",
+                            "Type": "nativeint",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "size",
+                            "Type": "uint64",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "WriteTexture",
+                    "Free": "wgpuQueueWriteTexture",
+                    "Description": "Schedule a data write into texture.\n\nThis method is intended to have low performance costs. As such, the write is not immediately submitted, and instead enqueued internally to happen at the start of the next submit() call.\n\nThis method fails if data overruns the size of fragment of texture specified with size.\n",
+                    "Args": [
+                        {
+                            "Name": "destination",
+                            "Type": "ImageCopyTexture byref"
+                        },
+                        {
+                            "Name": "data",
+                            "Type": "nativeint",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "dataSize",
+                            "Type": "uint64",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "dataLayout",
+                            "Type": "TextureDataLayout byref"
+                        },
+                        {
+                            "Name": "writeSize",
+                            "Type": "Extent3D byref"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Type": "RenderBundle",
+            "Description": "Pre-prepared reusable bundle of GPU operations.\n\nIt only supports a handful of render commands, but it makes them reusable. RenderBundles can be executed onto a CommandEncoder using RenderPass::execute_bundles.\n\nExecuting a RenderBundle is often more efficient then issuing the underlying commands manually.",
+            "Functions": [
+                {
+                    "Name": "Drop",
+                    "Free": "wgpuRenderBundleDrop",
+                    "Description": "Executes the destructor for this type.",
+                    "Args": []
+                }
+            ]
+        },
+        {
+            "Type": "RenderBundleEncoder",
+            "Description": "Encodes a series of GPU operations into a reusable “render bundle”.\n\nIt only supports a handful of render commands, but it makes them reusable. RenderBundles can be executed onto a CommandEncoder using RenderPass.ExecuteBundles.\n\nExecuting a RenderBundle is often more efficient then issuing the underlying commands manually.",
+            "Functions": [
+                {
+                    "Name": "Draw",
+                    "Free": "wgpuRenderBundleEncoderDraw",
+                    "Description": "Draws primitives from the active vertex buffer(s).\n\nThe active vertex buffers can be set with RenderBundleEncoder.SetVertexBuffer.",
+                    "Args": [
+                        {
+                            "Name": "vertexCount",
+                            "Type": "uint32",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "instanceCount",
+                            "Type": "uint32",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "firstVertex",
+                            "Type": "uint32",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "firstInstance",
+                            "Type": "uint32",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "DrawIndexed",
+                    "Free": "wgpuRenderBundleEncoderDrawIndexed",
+                    "Description": "Draws indexed primitives using the active index buffer and the active vertex buffers.\n\nThe active index buffer can be set with RenderBundleEncoder.SetIndexBuffer, while the active vertex buffers can be set with RenderBundleEncoder.SetVertexBuffer.\n",
+                    "Args": [
+                        {
+                            "Name": "indexCount",
+                            "Type": "uint32",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "instanceCount",
+                            "Type": "uint32",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "firstIndex",
+                            "Type": "uint32",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "baseVertex",
+                            "Type": "int32",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "firstInstance",
+                            "Type": "uint32",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "DrawIndexedIndirect",
+                    "Free": "wgpuRenderBundleEncoderDrawIndexedIndirect",
+                    "Description": "Draws indexed primitives using the active index buffer and the active vertex buffers, based on the contents of the indirectBuffer.\n\nThe active index buffer can be set with RenderBundleEncoder.SetIndexBuffer, while the active vertex buffers can be set with RenderBundleEncoder.SetVertexBuffer.",
+                    "Args": [
+                        {
+                            "Name": "indirectBuffer",
+                            "Type": "Buffer",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "indirectOffset",
+                            "Type": "uint64",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "DrawIndirect",
+                    "Free": "wgpuRenderBundleEncoderDrawIndirect",
+                    "Description": "Draws primitives from the active vertex buffer(s) based on the contents of the indirectBuffer.\n\nThe active vertex buffers can be set with RenderBundleEncoder.SetVertexBuffer.",
+                    "Args": [
+                        {
+                            "Name": "indirectBuffer",
+                            "Type": "Buffer",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "indirectOffset",
+                            "Type": "uint64",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "Finish",
+                    "Free": "wgpuRenderBundleEncoderFinish",
+                    "Description": "Finishes recording and returns a RenderBundle that can be executed in other render passes.",
+                    "Args": [
+                        {
+                            "Name": "descriptor",
+                            "Type": "RenderBundleDescriptor byref"
+                        }
+                    ]
+                },
+                {
+                    "Name": "InsertDebugMarker",
+                    "Free": "wgpuRenderBundleEncoderInsertDebugMarker",
+                    "Description": "",
+                    "Args": [
+                        {
+                            "Name": "markerLabel",
+                            "Type": "string",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "PopDebugGroup",
+                    "Free": "wgpuRenderBundleEncoderPopDebugGroup",
+                    "Description": "",
+                    "Args": []
+                },
+                {
+                    "Name": "PushDebugGroup",
+                    "Free": "wgpuRenderBundleEncoderPushDebugGroup",
+                    "Description": "",
+                    "Args": [
+                        {
+                            "Name": "groupLabel",
+                            "Type": "string",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "SetBindGroup",
+                    "Free": "wgpuRenderBundleEncoderSetBindGroup",
+                    "Description": "Sets the active bind group for a given bind group index. The bind group layout in the active pipeline when any draw() function is called must match the layout of this bind group.\n\nIf the bind group have dynamic offsets, provide them in the binding order.",
+                    "Args": [
+                        {
+                            "Name": "groupIndex",
+                            "Type": "uint32",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "group",
+                            "Type": "BindGroup",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "dynamicOffsetCount",
+                            "Type": "uint32",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "dynamicOffsets",
+                            "Type": "uint32 byref"
+                        }
+                    ]
+                },
+                {
+                    "Name": "SetIndexBuffer",
+                    "Free": "wgpuRenderBundleEncoderSetIndexBuffer",
+                    "Description": "Sets the active index buffer.\n\nSubsequent calls to DrawIndexed on this RenderBundleEncoder will use buffer as the source index buffer.\n",
+                    "Args": [
+                        {
+                            "Name": "buffer",
+                            "Type": "Buffer",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "format",
+                            "Type": "IndexFormat",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "offset",
+                            "Type": "uint64",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "size",
+                            "Type": "uint64",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "SetPipeline",
+                    "Free": "wgpuRenderBundleEncoderSetPipeline",
+                    "Description": "Sets the active render pipeline.\n\nSubsequent draw calls will exhibit the behavior defined by pipeline.\n",
+                    "Args": [
+                        {
+                            "Name": "pipeline",
+                            "Type": "RenderPipeline",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "SetVertexBuffer",
+                    "Free": "wgpuRenderBundleEncoderSetVertexBuffer",
+                    "Description": "Assign a vertex buffer to a slot.\n\nSubsequent calls to draw and draw_indexed on this RenderBundleEncoder will use buffer as one of the source vertex buffers.\n\nThe slot refers to the index of the matching descriptor in VertexState.Buffers.",
+                    "Args": [
+                        {
+                            "Name": "slot",
+                            "Type": "uint32",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "buffer",
+                            "Type": "Buffer",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "offset",
+                            "Type": "uint64",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "size",
+                            "Type": "uint64",
+                            "Description": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Type": "RenderPassEncoder",
+            "Description": "In-progress recording of a render pass.",
+            "Functions": [
+                {
+                    "Name": "BeginOcclusionQuery",
+                    "Free": "wgpuRenderPassEncoderBeginOcclusionQuery",
+                    "Description": "",
+                    "Args": [
+                        {
+                            "Name": "queryIndex",
+                            "Type": "uint32",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "BeginPipelineStatisticsQuery",
+                    "Free": "wgpuRenderPassEncoderBeginPipelineStatisticsQuery",
+                    "Description": "",
+                    "Args": [
+                        {
+                            "Name": "querySet",
+                            "Type": "QuerySet",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "queryIndex",
+                            "Type": "uint32",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "Draw",
+                    "Free": "wgpuRenderPassEncoderDraw",
+                    "Description": "Draws primitives from the active vertex buffer(s).\n\nThe active vertex buffers can be set with RenderPass.SetVertexBuffer.",
+                    "Args": [
+                        {
+                            "Name": "vertexCount",
+                            "Type": "uint32",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "instanceCount",
+                            "Type": "uint32",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "firstVertex",
+                            "Type": "uint32",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "firstInstance",
+                            "Type": "uint32",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "DrawIndexed",
+                    "Free": "wgpuRenderPassEncoderDrawIndexed",
+                    "Description": "Draws indexed primitives using the active index buffer and the active vertex buffers.\n\nThe active index buffer can be set with RenderPass.SetIndexBuffer, while the active vertex buffers can be set with RenderPass.SetVertexBuffer.\n",
+                    "Args": [
+                        {
+                            "Name": "indexCount",
+                            "Type": "uint32",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "instanceCount",
+                            "Type": "uint32",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "firstIndex",
+                            "Type": "uint32",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "baseVertex",
+                            "Type": "int32",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "firstInstance",
+                            "Type": "uint32",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "DrawIndexedIndirect",
+                    "Free": "wgpuRenderPassEncoderDrawIndexedIndirect",
+                    "Description": "Draws indexed primitives using the active index buffer and the active vertex buffers, based on the contents of the indirect_buffer.\n\nThe active index buffer can be set with RenderPass.SetIndexBuffer, while the active vertex buffers can be set with RenderPass.SetVertexBuffer.",
+                    "Args": [
+                        {
+                            "Name": "indirectBuffer",
+                            "Type": "Buffer",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "indirectOffset",
+                            "Type": "uint64",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "DrawIndirect",
+                    "Free": "wgpuRenderPassEncoderDrawIndirect",
+                    "Description": "Draws primitives from the active vertex buffer(s) based on the contents of the indirect_buffer.\n\nThe active vertex buffers can be set with RenderPass.SetVertexBuffer.",
+                    "Args": [
+                        {
+                            "Name": "indirectBuffer",
+                            "Type": "Buffer",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "indirectOffset",
+                            "Type": "uint64",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "End",
+                    "Free": "wgpuRenderPassEncoderEnd",
+                    "Description": "",
+                    "Args": []
+                },
+                {
+                    "Name": "EndOcclusionQuery",
+                    "Free": "wgpuRenderPassEncoderEndOcclusionQuery",
+                    "Description": "",
+                    "Args": []
+                },
+                {
+                    "Name": "EndPipelineStatisticsQuery",
+                    "Free": "wgpuRenderPassEncoderEndPipelineStatisticsQuery",
+                    "Description": "End the pipeline statistics query on this render pass. It can be started with begin_pipeline_statistics_query. Pipeline statistics queries may not be nested.",
+                    "Args": []
+                },
+                {
+                    "Name": "ExecuteBundles",
+                    "Free": "wgpuRenderPassEncoderExecuteBundles",
+                    "Description": "Execute a render bundle, which is a set of pre-recorded commands that can be run together.",
+                    "Args": [
+                        {
+                            "Name": "bundlesCount",
+                            "Type": "uint32",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "bundles",
+                            "Type": "RenderBundle byref"
+                        }
+                    ]
+                },
+                {
+                    "Name": "InsertDebugMarker",
+                    "Free": "wgpuRenderPassEncoderInsertDebugMarker",
+                    "Description": "",
+                    "Args": [
+                        {
+                            "Name": "markerLabel",
+                            "Type": "string",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "PopDebugGroup",
+                    "Free": "wgpuRenderPassEncoderPopDebugGroup",
+                    "Description": "",
+                    "Args": []
+                },
+                {
+                    "Name": "PushDebugGroup",
+                    "Free": "wgpuRenderPassEncoderPushDebugGroup",
+                    "Description": "",
+                    "Args": [
+                        {
+                            "Name": "groupLabel",
+                            "Type": "string",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "SetBindGroup",
+                    "Free": "wgpuRenderPassEncoderSetBindGroup",
+                    "Description": "Sets the active bind group for a given bind group index. The bind group layout in the active pipeline when any draw() function is called must match the layout of this bind group.\n\nIf the bind group have dynamic offsets, provide them in binding order. These offsets have to be aligned to Limits.minUniformBufferOffsetAlignment or Limits.minStorageBufferOffsetAlignment appropriately.\n",
+                    "Args": [
+                        {
+                            "Name": "groupIndex",
+                            "Type": "uint32",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "group",
+                            "Type": "BindGroup",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "dynamicOffsetCount",
+                            "Type": "uint32",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "dynamicOffsets",
+                            "Type": "uint32 byref"
+                        }
+                    ]
+                },
+                {
+                    "Name": "SetBlendConstant",
+                    "Free": "wgpuRenderPassEncoderSetBlendConstant",
+                    "Description": "Sets the blend color as used by some of the blending modes.\n\nSubsequent blending tests will test against this value.",
+                    "Args": [
+                        {
+                            "Name": "color",
+                            "Type": "Color byref"
+                        }
+                    ]
+                },
+                {
+                    "Name": "SetIndexBuffer",
+                    "Free": "wgpuRenderPassEncoderSetIndexBuffer",
+                    "Description": "Sets the active index buffer.\n\nSubsequent calls to draw_indexed on this RenderPass will use buffer as the source index buffer.",
+                    "Args": [
+                        {
+                            "Name": "buffer",
+                            "Type": "Buffer",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "format",
+                            "Type": "IndexFormat",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "offset",
+                            "Type": "uint64",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "size",
+                            "Type": "uint64",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "SetPipeline",
+                    "Free": "wgpuRenderPassEncoderSetPipeline",
+                    "Description": "Sets the active render pipeline.\n\nSubsequent draw calls will exhibit the behavior defined by pipeline.",
+                    "Args": [
+                        {
+                            "Name": "pipeline",
+                            "Type": "RenderPipeline",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "SetScissorRect",
+                    "Free": "wgpuRenderPassEncoderSetScissorRect",
+                    "Description": "Sets the scissor region.\n\nSubsequent draw calls will discard any fragments that fall outside this region.",
+                    "Args": [
+                        {
+                            "Name": "x",
+                            "Type": "uint32",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "y",
+                            "Type": "uint32",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "width",
+                            "Type": "uint32",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "height",
+                            "Type": "uint32",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "SetStencilReference",
+                    "Free": "wgpuRenderPassEncoderSetStencilReference",
+                    "Description": "Sets the stencil reference.\n\nSubsequent stencil tests will test against this value.",
+                    "Args": [
+                        {
+                            "Name": "reference",
+                            "Type": "uint32",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "SetVertexBuffer",
+                    "Free": "wgpuRenderPassEncoderSetVertexBuffer",
+                    "Description": "Assign a vertex buffer to a slot.\n\nSubsequent calls to draw and draw_indexed on this RenderPass will use buffer as one of the source vertex buffers.\n\nThe slot refers to the index of the matching descriptor in VertexState.Buffers.",
+                    "Args": [
+                        {
+                            "Name": "slot",
+                            "Type": "uint32",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "buffer",
+                            "Type": "Buffer",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "offset",
+                            "Type": "uint64",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "size",
+                            "Type": "uint64",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "SetViewport",
+                    "Free": "wgpuRenderPassEncoderSetViewport",
+                    "Description": "Sets the viewport region.\n\nSubsequent draw calls will draw any fragments in this region.",
+                    "Args": [
+                        {
+                            "Name": "x",
+                            "Type": "float",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "y",
+                            "Type": "float",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "width",
+                            "Type": "float",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "height",
+                            "Type": "float",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "minDepth",
+                            "Type": "float",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "maxDepth",
+                            "Type": "float",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "SetPushConstants",
+                    "Free": "wgpuRenderPassEncoderSetPushConstants",
+                    "Description": "Set push constant data.\n\nOffset is measured in bytes, but must be a multiple of PUSH_CONSTANT_ALIGNMENT.\n\nData size must be a multiple of 4 and must be aligned to the 4s, so we take an array of u32. For example, with an offset of 4 and an array of [u32; 3], that will write to the range of 4..16.\n\nFor each byte in the range of push constant data written, the union of the stages of all push constant ranges that covers that byte must be exactly stages. There’s no good way of explaining this simply, so here are some examples:\n\nFor the given ranges:\n- 0..4 Vertex\n- 4..8 Fragment\n\nYou would need to upload this in two set_push_constants calls. First for the Vertex range, second for the Fragment range.\n\nFor the given ranges:\n- 0..8  Vertex\n- 4..12 Fragment\n\nYou would need to upload this in three set_push_constants calls. First for the Vertex only range 0..4, second for the Vertex | Fragment range 4..8, third for the Fragment range 8..12.",
+                    "Args": [
+                        {
+                            "Name": "stages",
+                            "Type": "ShaderStage",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "offset",
+                            "Type": "uint32",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "sizeBytes",
+                            "Type": "uint32",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "data",
+                            "Type": "nativeint",
+                            "Description": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Type": "RenderPipeline",
+            "Description": "Handle to a rendering (graphics) pipeline.\n\nA RenderPipeline object represents a graphics pipeline and its stages, bindings, vertex buffers and targets. A RenderPipeline may be created with Device.CreateRenderPipeline.\n",
+            "Functions": [
+                {
+                    "Name": "GetBindGroupLayout",
+                    "Free": "wgpuRenderPipelineGetBindGroupLayout",
+                    "Description": "Get an object representing the bind group layout at a given index.",
+                    "Args": [
+                        {
+                            "Name": "groupIndex",
+                            "Type": "uint32",
+                            "Description": "The index of the bind group layout."
+                        }
+                    ]
+                },
+                {
+                    "Name": "SetLabel",
+                    "Free": "wgpuRenderPipelineSetLabel",
+                    "Description": "",
+                    "Args": [
+                        {
+                            "Name": "label",
+                            "Type": "string",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "Drop",
+                    "Free": "wgpuRenderPipelineDrop",
+                    "Description": "Executes the destructor for this type.",
+                    "Args": []
+                }
+            ]
+        },
+        {
+            "Type": "Sampler",
+            "Description": "Handle to a sampler.\n\nA Sampler object defines how a pipeline will sample from a TextureView. Samplers define image filters (including anisotropy) and address (wrapping) modes, among other things. See the documentation for SamplerDescriptor for more information.",
+            "Functions": [
+                {
+                    "Name": "Drop",
+                    "Free": "wgpuSamplerDrop",
+                    "Description": "Executes the destructor for this type.",
+                    "Args": []
+                }
+            ]
+        },
+        {
+            "Type": "ShaderModule",
+            "Description": "Handle to a compiled shader module.\n\nA ShaderModule represents a compiled shader module on the GPU. It can be created by passing valid SPIR-V source code to Device.CreateShaderModule. Shader modules are used to define programmable stages of a pipeline.",
+            "Functions": [
+                {
+                    "Name": "GetCompilationInfo",
+                    "Free": "wgpuShaderModuleGetCompilationInfo",
+                    "Description": "",
+                    "Args": [
+                        {
+                            "Name": "callback",
+                            "Type": "CompilationInfoCallback",
+                            "Description": ""
+                        },
+                        {
+                            "Name": "userdata",
+                            "Type": "nativeint",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "SetLabel",
+                    "Free": "wgpuShaderModuleSetLabel",
+                    "Description": "",
+                    "Args": [
+                        {
+                            "Name": "label",
+                            "Type": "string",
+                            "Description": ""
+                        }
+                    ]
+                },
+                {
+                    "Name": "Drop",
+                    "Free": "wgpuShaderModuleDrop",
+                    "Description": "Executes the destructor for this type.",
+                    "Args": []
+                }
+            ]
+        },
+        {
+            "Type": "Surface",
+            "Description": "Handle to a presentable surface.\n\nA Surface represents a platform-specific surface (e.g. a window) onto which rendered images may be presented. A Surface may be created with the unsafe function Instance.CreateSurface.",
+            "Functions": [
+                {
+                    "Name": "GetPreferredFormat",
+                    "Free": "wgpuSurfaceGetPreferredFormat",
+                    "Description": "Returns an optimal texture format to use for the Surface with this adapter.\n\nReturns None if the surface is incompatible with the adapter.",
+                    "Args": [
+                        {
+                            "Name": "adapter",
+                            "Type": "Adapter",
+                            "Description": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Type": "SwapChain",
+            "Description": "A collection of buffers that are used for displaying rendered textures to the user.",
+            "Functions": [
+                {
+                    "Name": "GetCurrentTextureView",
+                    "Free": "wgpuSwapChainGetCurrentTextureView",
+                    "Description": "Returns the TextureView to be used as a render target for command encoding.",
+                    "Args": []
+                },
+                {
+                    "Name": "Present",
+                    "Free": "wgpuSwapChainPresent",
+                    "Description": "Swaps the currently presented texture with the next frame in flight.",
+                    "Args": []
+                }
+            ]
+        },
+        {
+            "Type": "Texture",
+            "Description": "Handle to a texture on the GPU.\n\nCreated by calling Device.CreateTexture.",
+            "Functions": [
+                {
+                    "Name": "CreateView",
+                    "Free": "wgpuTextureCreateView",
+                    "Description": "Creates a view of this texture.",
+                    "Args": [
+                        {
+                            "Name": "descriptor",
+                            "Type": "TextureViewDescriptor byref"
+                        }
+                    ]
+                },
+                {
+                    "Name": "Destroy",
+                    "Free": "wgpuTextureDestroy",
+                    "Description": "Destroy the associated native resources as soon as possible.",
+                    "Args": []
+                },
+                {
+                    "Name": "Drop",
+                    "Free": "wgpuTextureDrop",
+                    "Description": "Executes the destructor for this type.",
+                    "Args": []
+                }
+            ]
+        },
+        {
+            "Type": "TextureView",
+            "Description": "Handle to a texture view.\n\nA TextureView object describes a texture and associated metadata needed by a RenderPipeline or BindGroup.",
+            "Functions": [
+                {
+                    "Name": "Drop",
+                    "Free": "wgpuTextureViewDrop",
+                    "Description": "Executes the destructor for this type.",
+                    "Args": []
+                }
+            ]
+        }
+    ]
+}

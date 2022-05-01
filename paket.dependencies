@@ -1,0 +1,14 @@
+source https://www.nuget.org/api/v2
+
+nuget CaseExtensions 1.1.0
+nuget Expecto 9.0.4
+nuget Fantomas 5.0.0-alpha-002 prerelease
+nuget Fantomas.Extras 5.0.0-alpha-002 prerelease
+nuget FParsec 1.1.1
+nuget FSharp.Collections.ParallelSeq 1.2.0
+nuget FSharp.Core 6.0.3
+nuget FSharp.Data 4.2.8
+nuget Microsoft.CodeAnalysis.ActivePatterns 0.8.20
+nuget Microsoft.NET.Test.Sdk 17.2.0-preview-20220401-08 prerelease
+nuget Silk.NET.GLFW
+nuget YoloDev.Expecto.TestSdk 0.12.20

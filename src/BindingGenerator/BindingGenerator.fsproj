@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <LangVersion>preview</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="headers\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Compile Include="Parsing\Ast.fs" />
+    <Compile Include="Parsing\Documentation.fs" />
+    <Compile Include="Parsing\Parsers.fs" />
+    <Compile Include="Parsing\Headers.fs" />
+    <Compile Include="CodeGen\Common.fs" />
+    <Compile Include="CodeGen\FSharp.fs" />
+    <Compile Include="Program.fs" />
+    <Content Include="README.md" />
+  </ItemGroup>
+  <Import Project="..\..\.paket\Paket.Restore.targets" />
+</Project>
