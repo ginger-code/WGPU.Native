@@ -1,6 +1,8 @@
 
 # WGPU.Native
 
+[![Nuget](https://img.shields.io/nuget/v/WGPU.FSharp.Native?label=nuget%20-%20F%23&logo=f%23&style=flat-square)](https://www.nuget.org/packages/WGPU.FSharp.Native)
+
 ## Low-level .NET bindings for wgpu-native
 
 *Buyer beware, these binding require heavy use of native pointers and marshaling*

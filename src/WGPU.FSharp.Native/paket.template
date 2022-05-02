@@ -1,0 +1,26 @@
+type project
+id WGPU.FSharp.Native
+title WGPU.FSharp.Native
+owners ginger-code
+licenseExpression MIT
+licenseUrl https://licenses.nuget.org/MIT
+description Low-level wgpu-native bindings for F#
+summary Low-level wgpu-native bindings for F#
+language F#
+projectUrl https://github.com/ginger-code/WGPU.Native
+repositoryUrl https://github.com/ginger-code/WGPU.Native
+repositoryType git
+tags wgpu graphics gpu f# fsharp low-level bindings rust gfx vulkan directx wgsl game
+authors ginger-code
+releaseNotes This release maps to the 0.12.0.1 version of WGPU, generated using a custom parser and generator.
+
+
+files
+    libwgpu.dll ==> lib/netstandard2.0
+    libwgpu.so ==> lib/netstandard2.0
+    libwgpu.lib ==> lib/netstandard2.0
+    libwgpu.dylib ==> lib/netstandard2.0
+    libwgpu.dll ==> lib/net6.0
+    libwgpu.so ==> lib/net6.0
+    libwgpu.lib ==> lib/net6.0
+    libwgpu.dylib ==> lib/net6.0
