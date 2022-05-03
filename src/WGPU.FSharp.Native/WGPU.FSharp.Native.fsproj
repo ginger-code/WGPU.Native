@@ -6,13 +6,15 @@
     <AssemblyName>WGPU.Native</AssemblyName>
     <RootNamespace>WGPU</RootNamespace>
     <NoWarn>9,51</NoWarn>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <IncludeContentInPack>true</IncludeContentInPack>
     <PackageId>WGPU.FSharp.Native</PackageId>
     <PackageVersion>0.12.0.1</PackageVersion>
     <Title>WGPU.FSharp.Native</Title>
     <Authors>ginger-code</Authors>
     <Description>Low-level wgpu-native bindings for F#</Description>
     <PackageProjectUrl>https://github.com/ginger-code/WGPU.Native</PackageProjectUrl>
-    <PackageLicenseExpression>https://licenses.nuget.org/MIT</PackageLicenseExpression>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIcon>wgpu.png</PackageIcon>
     <RepositoryUrl>https://github.com/ginger-code/WGPU.Native</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
@@ -21,24 +23,39 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="WGPU.fs" />
-    <Content Include="libwgpu.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="libwgpu.dylib">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="libwgpu.lib">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="libwgpu.so">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="README.md" />
+    <Content Include="native\win-x64\libwgpu.lib">
+      <PackagePath>runtimes\win-x64\native\libwgpu.lib</PackagePath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Pack>True</Pack>
+    </Content>
+    <Content Include="native\win-x64\libwgpu.dll">
+      <PackagePath>runtimes\win-x64\native\libwgpu.dll</PackagePath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Pack>True</Pack>
+    </Content>
+    <Content Include="native\linux-x64\libwgpu.so">
+      <PackagePath>runtimes\linux-x64\native\libwgpu.so</PackagePath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Pack>True</Pack>
+    </Content>
+    <Content Include="native\osx.12-x64\libwgpu.dylib">
+      <PackagePath>runtimes\osx.12-x64\native\libwgpu.dylib</PackagePath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Pack>True</Pack>
+    </Content>
+    <Content Include="native\osx.12-arm64\libwgpu.dylib">
+      <PackagePath>runtimes\osx.12-arm64\native\libwgpu.dylib</PackagePath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Pack>True</Pack>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="wgpu.png">
+    <Content Include="wgpu.png">
+      <PackagePath>wgpu.png</PackagePath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Pack>True</Pack>
-    </None>
+    </Content>
   </ItemGroup>
   <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>
